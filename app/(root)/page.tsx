@@ -8,14 +8,15 @@ export default async function Home({ searchParams }: {
   searchParams: Promise<{ query?: string }>
 }) {
   const query = (await searchParams).query;
+  console.log(query)
   const params = { search: query || null  };
-
+  console.log(params)
   const session = await auth();
 
   console.log(session?.id);
 
   const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params }) as unknown as { data: StartupCardType[] }
-
+  console.log(posts)
   return (
     <>
       <section className="pink_container">
